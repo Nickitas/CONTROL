@@ -1,0 +1,70 @@
+.ui_select {
+    position: relative;
+    margin: 8px;
+    display: inline-block;
+    min-width: 200px;
+    .Select {
+        padding: 11px 15px;
+        display: inline-block;
+        width: 100%;
+        border: 1px solid #a7a7a7;
+        border-radius: 6px;
+        background: var(--main_bg);
+        font-family: inherit;
+        outline: none;
+        color: var(--text_color);
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        transition: all .2s ease-in;
+        &::-ms-expand {
+            display: none;
+        }
+        &:hover, &:focus {
+            color: #1b1b1b;
+            border: 2px solid #4A76A8;
+            box-shadow: 0px 2px 52px -5px #53a9ea3d inset;
+            -webkit-box-shadow: 0px 2px 52px -5px #53a9ea3d inset;
+            -moz-box-shadow: 0px 2px 52px -5px #53a9ea3d inset;
+            border: 1px solid #53a9ea3d;
+        }
+        &:disabled {
+            opacity: 0;
+            pointer-events: none;
+        }
+        &:disabled {
+            opacity: 0;
+            pointer-events: none;
+        }
+        option {
+            padding: 10px;
+            border-radius: 15px;
+            border: none;
+            background: #ececec;
+            font-family: inherit;
+            color: #1b1b1b;
+            width: 300px;
+        }
+    }
+
+    .arrow {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width:1011px) {
+    .ui_select {
+        margin: 6px;
+        .Select {
+            padding: 6px;
+            font-size: 12px;
+        }
+        .arrow {
+            top: 8px;
+            right: 8px;
+        }
+    }
+}

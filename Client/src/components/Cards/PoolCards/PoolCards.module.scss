@@ -1,0 +1,24 @@
+@import '../../../styles/mixins.scss';
+
+.PoolCards {
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center
+    }
+    .breadcrumb {
+        @include breadcrumb;
+    }
+    .title {
+        @include title;
+    }
+}
+
+@media (max-width:1011px) {
+    .PoolCards {
+        .title {
+            font-size: 20px;
+        }
+    }
+}

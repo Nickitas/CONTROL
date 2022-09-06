@@ -1,0 +1,98 @@
+@import '../../../styles/mixins.scss';
+
+.CardsList {
+    .row {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .breadcrumb {
+        @include breadcrumb;
+    }
+    .title {
+        @include title;
+    }
+    .subtitle {
+        @include subtitle;
+    }
+    .panel {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        div[type="button"] ~ div[type="button"] {
+            margin-left: 10px;
+        }
+    }
+    .search_panel {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        .search_input {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            svg {
+                position: absolute;
+                top: 50%;
+                left: 18px;
+                transform: translateY(-50%);
+            }
+            input {
+                padding-left: 35px;
+            }
+        }
+    }
+    
+    .table_info {
+        margin: 5px 0 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1rem;
+        user-select: none;
+        p {
+            color: #666666;
+            span {
+                b {
+                    color: #008000;
+                }
+                &:first-child b {
+                    color:#000000;
+                }
+                &:last-child b {
+                    color:#ff0000;
+                }
+            }
+            span ~ span {
+                margin-left: 5px;
+            }
+        }
+    }
+    .table_wrapp {
+        margin-top: 10px;
+        padding-bottom: 40px;
+        label span{ font-family: inherit; }
+    }
+}
+
+
+@media (max-width:1011px) {
+    .CardsList {
+        .title {
+            font-size: 20px;
+        }
+        .subtitle {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width:732px) {
+    .CardsList { .table_info { p { display: none; } } }
+}

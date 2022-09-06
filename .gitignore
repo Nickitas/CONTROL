@@ -1,0 +1,11 @@
+/Client/node_modules
+/Client/.DS_Store
+/Client/dist
+/Client/dist-ssr
+/Client/*.local
+
+/Server/db.js
+/Server/test
+/Server/img
+/Server/node_modules
+/Server/yarn.lock

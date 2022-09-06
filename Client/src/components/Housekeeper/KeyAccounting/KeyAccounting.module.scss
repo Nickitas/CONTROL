@@ -1,0 +1,285 @@
+@import '../../../styles/mixins.scss';
+
+.KeyAccounting {
+    .breadcrumb {
+        @include breadcrumb;
+    }
+    .title {
+        @include title;
+    }
+    .subtitle {
+        @include subtitle;
+    }
+    .block {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        input {
+            width: 100%;
+        }
+        .info {
+            margin: 18px 0;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .keys {
+            width: 70%;
+            .list {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                max-width: 900px;
+            }
+            .keyBtn {
+                position: relative;
+                margin: 2px;
+                padding: 0 .2vw;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 9vw;
+                min-width: 100px;
+                .room {
+                    padding: 15px 0;
+                    width: 100%;
+                    max-width: 120%;
+                    border-radius: 5px 0 0 5px;
+                    background-color: var(--ex_color);
+                    font-weight: 900;
+                    font-size: 22px;
+                    line-height: 1;
+                    color: #fff;
+                    text-align: center;
+                    cursor: pointer;
+                    transition: all .2s ease-in;
+                    &:hover {
+                        transform: translateY(-2px);
+                        opacity: 0.8;
+                    }
+                }
+                .signal {
+                    padding: 5px 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 35%;
+                    height: 52px;
+                    border-radius: 0 5px 5px 0;
+                    background-color: #4A76A8;
+                    border-left: 2px solid var(--main_bg);
+                    cursor: pointer;
+                    transition: all .2s ease-in;
+                    &:hover {
+                        transform: translateY(-2px);
+                        opacity: 0.8;
+                    }
+                }
+                .loading {
+                    padding: 10px 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    border-radius: 5px;
+                    background-color: #4A76A8;
+                    svg {
+                        background-color: #4A76A8;
+                        -webkit-animation-name: spin;
+                        -webkit-animation-duration: 4000ms;
+                        -webkit-animation-iteration-count: infinite;
+                        -webkit-animation-timing-function: linear;
+                        -moz-animation-name: spin;
+                        -moz-animation-duration: 4000ms;
+                        -moz-animation-iteration-count: infinite;
+                        -moz-animation-timing-function: linear;
+                        -ms-animation-name: spin;
+                        -ms-animation-duration: 4000ms;
+                        -ms-animation-iteration-count: infinite;
+                        -ms-animation-timing-function: linear;
+                        animation-name: spin;
+                        animation-duration: 4000ms;
+                        animation-iteration-count: infinite;
+                        animation-timing-function: linear;
+                    }
+                }
+            }
+        }
+
+        .allKeys {
+            position: absolute;
+            top: 65px;
+            left: 0;
+            right: 0;
+            padding: 10px 8px;
+            width: 100%;
+            min-width: 450px;
+            border-radius: 10px;
+            height: auto;
+            max-height: 880px;
+            border: 1px solid rgb(212, 212, 212);
+            background-color: var(--main_bg);
+            overflow-y: scroll;
+            .allKeyslist {
+                margin-top: 20px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+        ._allKeys_hidden {
+            visibility: hidden;
+        }
+
+        .card {
+            position: relative;
+            margin: 10px 0;
+            padding-right: 50px;
+            perspective: 1000px;
+            .front, .back {
+                position: absolute;
+                top: 0;
+                left: 0;
+                max-width: 360px;
+                max-height: 480px;
+                width: 18.75vw;
+                height: 25vw;
+                min-width: 226px;
+                min-height: 226px;
+                border-radius: 25px;
+                -webkit-box-shadow: 2px 2px 8px 4px rgba(34, 60, 80, 0.15);
+                -moz-box-shadow: 2px 2px 8px 4px rgba(34, 60, 80, 0.15);
+                box-shadow: 2px 2px 8px 4px rgba(34, 60, 80, 0.15);
+                backface-visibility: hidden;
+                transition: all .8s ease-in-out;
+            }
+            .front {
+                position: relative;
+                background: no-repeat url(../../../img/person.svg) center center;
+                background-size: contain !important;
+                overflow: hidden;
+                .person_name {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    right: 0;
+                    padding: 5px 10px;
+                    backdrop-filter: 50px;
+                    background: rgba(255, 255, 255, 0.7);
+                    @include subtitle;
+                    margin: 0;
+                    color: #000;
+                    font-size: 16px;
+                    text-align: left;
+                }
+            }
+            .back {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                transform: rotateY(180deg);
+                .person_info {
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 16px;
+                    text-align: left;
+                    p ~ p {
+                        margin-top: 4px;
+                    }
+                }
+            }
+            &:hover {
+                .front {transform: rotateY(180deg);}
+                .back {transform: rotateY(360deg);}
+            }
+        }
+    }
+    .notes {
+        margin: 25px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 900px;
+        user-select: none;
+        p {
+            font-size: 13px;
+            font-weight: 200;
+        }
+    }
+    .notes_row {
+        margin: 3px 0;
+        display: flex;
+        align-items: center;
+    }
+    .marker {
+        margin-right: 6px;
+        width: 25px;
+        height: 25px;
+        border-radius: 5px;
+        background-color: #bababa;
+    }
+    .marker.in {
+        background-color: #008000;
+    }
+    .marker.out {
+        background-color: var(--red);
+    }
+}
+
+@media (max-width:1011px) {
+    .KeyAccounting {
+        .title {
+            font-size: 20px;
+        }
+        .subtitle {
+            font-size: 14px;
+        }
+        .front {
+            .person_name {
+                font-size: 12px;
+            }
+        }
+        .back {
+            font-size: 12px;
+        }
+    }
+}
+@media (max-width:861px) {
+    .KeyAccounting {
+        .info {
+            flex-direction: column-reverse;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        .keys, .card {
+            width: 100%;
+            min-width: 100%;
+        }
+    }
+}
+
+
+
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(360deg); }
+    to { -ms-transform: rotate(0deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(360deg); }
+    to { -moz-transform: rotate(0deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(360deg); }
+    to { -webkit-transform: rotate(0deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(360deg);
+    }
+    to {
+        transform:rotate(0deg);
+    }
+}

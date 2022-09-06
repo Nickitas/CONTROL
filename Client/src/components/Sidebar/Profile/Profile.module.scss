@@ -1,0 +1,76 @@
+@import '../../../styles/mixins.scss';
+
+.Profile {
+    .row {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .title {
+        @include title;
+    }
+    .subtitle {
+        @include subtitle;
+    }
+
+    .wrapper {
+        display: grid; 
+        grid-template-columns: repeat(2, minmax(400px, 1fr)); 
+        grid-template-rows: 1fr 1fr; 
+        gap: 0px 0px; 
+        grid-gap: 40px;
+
+        .data, .account, .job {
+            height: 400px;
+        }
+    }
+    .person {
+        padding: 0 16vw 0 0;
+        width: 100%;
+        height: 400px;
+
+        .img {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+    }
+
+    .data {
+    }
+    .account {
+    }
+    .job {
+    }
+
+
+    .head {
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+    }
+    .body {
+        padding: 10px 20px;
+        display: flex;
+        flex-direction: column;
+
+        > div ~ div {
+            margin-top: 15px;
+        }
+    }
+}
+
+@media (max-width:1011px) {
+    .Profile {
+        .title {
+            font-size: 20px;
+        }
+        .subtitle {
+            font-size: 14px;
+        }
+    }
+}
