@@ -1,0 +1,33 @@
+
+
+.photo_upload {
+
+    input[type='file'] {
+        display: none;
+    }
+
+    .upload {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 180px;
+        max-width: 180px;
+        border: 2px dashed var(--ex2_color);
+        background-color: transparent;
+        border-radius: 16px;
+        color: var(--text_color);
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+
+        &:hover {
+            transition: all 0.2s ease-out;
+            border: 2px solid #2580ff;
+        }
+          
+        &:focus {
+            border: 2px solid #2580ff;
+            box-shadow: 0 0 0 3px var(--hover);
+        }
+    }
+}

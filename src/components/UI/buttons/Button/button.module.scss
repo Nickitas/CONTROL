@@ -1,0 +1,46 @@
+@import '../../../../assets/mixins/responsive_font.scss';
+
+
+.button {
+    padding: 0.7em 1.25em;
+    height: 40px;
+    outline: none;
+    background: transparent;
+    border-radius: 6px;
+    border: 2px solid var(--green);
+    font-family: inherit;
+    @include responsive_font(14, 12);
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--green);
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    transition: all .2s ease-in;
+
+    &:hover, &:focus {
+        background: var(--green);
+        color: #fff;
+        border: 2px solid transparent;
+    }
+}
+
+.button:disabled {
+    border: 2px solid var(--grey_text);
+    color: var(--grey_text);
+    &:hover {
+        background-color: transparent;
+        cursor: not-allowed;
+    }
+}
+
+.button[data-red] {
+    background: transparent;
+    border: 2px solid var(--red);
+    color: var(--red);
+    &:hover {
+        background: var(--red);
+        border: 2px solid transparent;
+        color: #fff;
+    }
+}

@@ -1,0 +1,15 @@
+
+.cat_loading {
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    min-width: 160px;
+    min-height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: url(../../../../../public/loading.gif);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: translateY(50%);
+}

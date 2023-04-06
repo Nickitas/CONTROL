@@ -1,0 +1,42 @@
+@import './responsive_font.scss';
+
+@mixin title {
+    margin: .45em .45em 1.25em 0;
+    font-weight: 800;
+    @include responsive_font(32, 28.5);
+    line-height: 1.5;
+    user-select: none;
+}
+
+@mixin subtitle {
+    margin: .4em 0;
+    font-weight: 700;
+    @include responsive_font(28, 20);
+    line-height: 1.35;
+    user-select: none;
+}
+
+@mixin headline {
+    margin: .35em 0;
+    font-weight: 600;
+    @include responsive_font(20.5, 18);
+    line-height: 1.2;
+    user-select: none;
+}
+
+@mixin text {
+    font-weight: 400;
+    @include responsive_font(20, 16);
+    line-height: 1.2;
+    user-select: none;
+}
+
+@mixin link {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    
+    &:hover { opacity: .6; }
+}

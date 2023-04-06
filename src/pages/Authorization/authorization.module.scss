@@ -1,0 +1,82 @@
+@import '../../assets/mixins/responsive_font.scss';
+
+
+.authorization {
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - (52px + 31.14px));
+    transform: translateX(-78px);
+
+    .form {
+        margin: 0 20px;
+        width: 100%;
+        max-width: 330px;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .body {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 10px;
+        width: 100%;
+        min-height: 120px;
+    }
+
+    .footer {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .errors_messages {
+            margin-top: .6rem;
+            border-radius: 8px;
+            border: 1px solid var(--theme_bg);
+
+            .errmsg {
+                padding: 0.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--red);
+                
+                svg {
+                    margin-right: 8px;
+                }
+
+                span {
+                    font-size: 12px;
+                    font-weight: 700;
+                    text-align: center;
+                    user-select: none;
+                }
+            }
+
+            .offscreen {
+                position: absolute;
+                left: -9999px;
+            }
+        }
+
+        .another_variant {
+            margin-top: 25px;
+            user-select: none;
+
+            a {
+                max-width: 200px;
+                @include responsive_font(14, 12);
+            }
+        }
+    }
+}

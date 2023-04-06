@@ -1,0 +1,67 @@
+
+
+.checkbox_wrapper {
+    padding: 8px 6px 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    input[type='checkbox'] {
+        -webkit-appearance: none;
+        appearance: none;
+
+        margin-right: 8px;
+        width: 1.8em;
+        height: 1.8em;
+        border-radius: 0.35em;
+        border: 0.15em solid var(--ex2_color);
+        outline: none;
+        
+        &:checked {
+            position: relative;
+            background-color: transparent;
+            border-color: #2580ff;
+        }
+
+        &:checked::before {
+            content: url('../../../assets/images/icons/okey.svg');
+            font-size: 1.5em;
+            color: #fff;
+            position: absolute;
+            top: 1px;
+        }
+
+        &.checked {
+            position: relative;
+            background-color: var(--ex2_color);
+        }
+    }
+    & > label {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text_color);
+        user-select: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    & ~ span {
+        padding-left: 6px;
+        font-size: 10px;
+        opacity: .4;
+    }
+}
+
+.checkbox-wrapper input[type="checkbox"]:disabled {
+    border-color: #c0c0c0;
+    background-color: #c0c0c0;
+}
+  
+.checkbox-wrapper input[type="checkbox"]:disabled + label {
+    color: #c0c0c0;
+}
+  
+.checkbox-wrapper input[type="checkbox"]:focus {
+    box-shadow: 0 0 20px #2580ff;
+}

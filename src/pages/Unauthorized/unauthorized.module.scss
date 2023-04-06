@@ -1,0 +1,19 @@
+
+.unauthorized {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .col {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        max-width: 1920px;
+
+        & ~ .col {
+            margin-top: 1vw;
+        }
+    }
+}
+

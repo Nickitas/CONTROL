@@ -1,0 +1,36 @@
+@import '../../../assets/aminations.scss';
+
+
+.up_down_btn {
+    position: fixed;
+    z-index: 999;
+    bottom: 5px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--ex2_color);
+    color: #fff;
+    border-radius: 15px;
+    user-select: none;
+    
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    &.rot {
+        transform: rotate(180deg);
+    }
+    
+    &:hover {
+        transform: translateY(-4px);
+    }
+
+    svg {
+        -webkit-animation: bounce-updown 1.6s linear infinite;
+        animation: bounce-updown 1.6s linear infinite;
+    }
+}
+
+@include bounce-updown;

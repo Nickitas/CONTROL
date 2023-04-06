@@ -1,0 +1,78 @@
+@import '../../assets/mixins/responsive_font.scss';
+
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 98;
+    width: 100%;
+    padding: 7px 0;
+    background-color: var(--theme_bg);
+    transition: all .2s ease-out;
+
+    .container {
+        margin: 0 auto;
+        min-width: 100%;
+    }
+
+    .footer-row {
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1920px;
+    }
+    
+    .footer__copywrite {
+        margin-right: 20px;
+        @include responsive_font(13, 10);
+        line-height: 1.4;
+        color: var(--grey_text);
+    }
+
+    .footer__politics {
+        margin-right: 20px;
+        @include responsive_font(13, 10);
+        line-height: 1.2;
+        color: var(--grey_text);
+        a {
+            color: inherit
+        }
+    }
+    
+    .footer__version {
+        @include responsive_font(10, 8);
+        line-height: 1.2;
+        color: var(--red);
+        user-select: none;
+    }
+
+    @media (max-width:555px) {
+        .footer__copywrite span,
+        .footer__version span {
+            display: none;
+        }
+    }
+
+    @media (max-width:381px) {
+        .footer__copywrite,
+        .footer__copywrite,
+        .footer__version {
+            font-size: 10px;
+        }
+    }
+}
+
+
+
+.sidebar ~ .footer {
+    padding-left: 70px;
+}
+
+.sidebar.active ~ .footer {
+    padding-left: 220px;
+
+    @media (max-width:696px) {
+        padding-left: 66px;
+    }
+}

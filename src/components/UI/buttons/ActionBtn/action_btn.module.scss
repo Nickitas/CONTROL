@@ -1,0 +1,37 @@
+@import '../../../../assets/mixins/responsive_font.scss';
+
+
+.action_btn {
+    padding: .5em;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background: var(--theme_bg);
+    border-radius: 6px;
+    border: 2px solid var(--theme_bg);
+    user-select: none;
+    cursor: pointer;
+    transition: all .2s ease-in;
+
+    .icon {
+        margin-right: 6px;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        color: #fff;
+    }
+
+    .action {
+        font-family: inherit;
+        @include responsive_font(14, 10);
+        font-weight: 600;
+        line-height: 1.5;
+        white-space: nowrap;
+        color: #fff;
+    }
+
+    &:hover, &:focus {
+        background: #5d6985;
+        border: 2px solid #5d6985;
+    }
+}

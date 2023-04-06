@@ -1,0 +1,40 @@
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    padding: 10px;
+    width: 100%;
+    color: #fff;
+    background-color: var(--theme_bg);
+    transition: all .2s ease-out;
+
+    .container {
+        margin: 0;
+        min-width: 100%;
+    }
+
+    .row {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1920px;
+    }
+
+    .logo_wrapper {
+        margin: 0 10px 0 0;
+        
+        a {
+            display: flex;
+            align-items: center;
+            color: var(--logo_color);
+            cursor: pointer;
+            transition: all .35s ease-out;
+
+            &:hover {
+                opacity: .85;
+                transform: scale(1.1);
+            }
+        }
+    }
+}

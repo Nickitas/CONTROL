@@ -1,0 +1,80 @@
+@import '../../assets/mixins/responsive_font.scss';
+@import '../../assets/aminations.scss';
+
+
+.home {
+    width: 100%;
+    height: calc(100vh - (60px + 31px));
+    overflow-y: hidden;
+
+    video {
+        position: fixed;
+        min-width: 100%;
+        min-height: 100%;
+    }
+}
+
+.hellow {
+    position: absolute;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 9px;
+    background-color: var(--main_bg);
+    font-weight: 800;
+    @include responsive_font(28, 18);
+    line-height: 1.2;
+    color: var(--text-color);
+    transition: all .2s ease;
+    animation: swing2 .6s 3s linear;
+
+    &.hidde {
+        opacity: 0;
+        transform: translateY(-150%);
+    }
+}
+
+.hero {
+    padding: 30px 20px 15px;
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    background: var(--baner_bg);
+    color: var(--text_color);
+    width: 100%;
+
+    h1 {
+        margin: 0 0 10px 0;
+        white-space: break-spaces;
+        line-height: 1;
+
+        strong {
+            white-space: nowrap;
+        }
+
+        @media (max-width:507px) {
+            span {
+                display: none;
+            }
+        }
+    }
+
+    .developers {
+        margin: 0 0 0 auto;
+        p {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 12px;
+            line-height: 1.1;
+            text-align: right;
+            span {
+                margin: 0 4px;
+            }
+            a {
+                font-size: inherit;
+            }
+        }
+    }
+}
+
+@include swing2;

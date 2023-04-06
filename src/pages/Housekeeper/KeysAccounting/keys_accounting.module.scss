@@ -1,0 +1,147 @@
+@import '../../../assets/mixins/responsive_font.scss';
+@import '../../../assets/mixins/typography.scss';
+
+.keys_accounting {
+    
+    .row {
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 1920px;
+    }
+}
+
+.hiddeninput {
+        
+}
+
+.workplace {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+
+
+    .person_block {
+        margin-right: 2.4em;
+        flex-grow: 1;
+        
+
+    }
+    .keys_block {
+        flex-grow: 3;
+        
+
+    }
+}
+
+
+.card {
+    position: relative;
+    margin: 10px 0;
+    max-width: 360px;
+    perspective: 1000px;
+
+    .front, .back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-width: 360px;
+        max-height: 480px;
+        width: 18.75vw;
+        height: 25vw;
+        min-width: 226px;
+        min-height: 226px;
+        border-radius: 25px;
+        -webkit-box-shadow: 2px 2px 8px 4px rgba(34, 60, 80, 0.15);
+        -moz-box-shadow: 2px 2px 8px 4px rgba(34, 60, 80, 0.15);
+        box-shadow: 2px 2px 8px 4px rgba(34, 60, 80, 0.15);
+        backface-visibility: hidden;
+        transition: all .8s ease-in-out;
+    }
+    
+    .front {
+        position: relative;
+        background: no-repeat url(../../../assets/pic/defaultperson.svg) center center;
+        background-size: contain !important;
+        overflow: hidden;
+        .person_name {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            right: 0;
+            padding: 5px 10px;
+            backdrop-filter: 50px;
+            background: rgba(255, 255, 255, 0.7);
+            @include subtitle;
+            margin: 0;
+            color: #000;
+            font-size: 16px;
+            text-align: left;
+        }
+    }
+    
+    .back {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        transform: rotateY(180deg);
+        .person_info {
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+            text-align: left;
+            p ~ p {
+                margin-top: 4px;
+            }
+        }
+    }
+    
+    &:hover {
+        .front {transform: rotateY(180deg);}
+        .back {transform: rotateY(360deg);}
+    }
+}
+
+
+.notes {
+    margin: 50px 0 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 600px;
+    user-select: none;
+    
+    p {
+        margin-right: 20px;
+        @include responsive_font(18, 13);
+        font-weight: 400;
+    }
+}
+
+.notes_row {
+    margin: 3px 0;
+    display: flex;
+    align-items: center;
+    
+    &:first-child b { color: var(--green); }
+    &:last-child b { color: var(--red); }
+}
+
+.marker {
+    margin-right: 6px;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: #bababa;
+}
+.marker.in {
+    background-color: var(--green);
+}
+.marker.out {
+    background-color: var(--red);
+}

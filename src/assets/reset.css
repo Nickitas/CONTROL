@@ -1,0 +1,20 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif !important;
+}
+
+*:focus {outline: none;}
+*::-webkit-scrollbar {width: 6px; height: 6px;}
+*::-webkit-scrollbar-track {
+    background-color: #2d323e;
+    border-radius: 6px;
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: linear-gradient(45deg, rgb(93, 105, 133) 31%, rgb(74, 118, 168) 70%);
+    background: -webkit-linear-gradient(45deg, rgb(93, 105, 133) 31%, rgb(74, 118, 168) 70%);
+    background: -moz-linear-gradient(45deg, rgb(93, 105, 133) 31%, rgb(74, 118, 168) 70%);
+}

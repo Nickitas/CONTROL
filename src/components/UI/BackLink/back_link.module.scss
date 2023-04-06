@@ -1,0 +1,32 @@
+
+.back_link {
+    margin-top: 5px;
+    padding: 2px 3px;
+    display: flex;
+    align-items: center;
+    max-width: 90px;
+    min-width: 90px;
+    border-radius: 15px;
+    user-select: none;
+    cursor: pointer;
+    transition: all .2s ease-in;
+
+    span {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.5;
+        color: var(--grey_text);
+    }
+    
+    svg { transition: all .2s ease-in; }
+
+    &:hover {
+        background-color: var(--theme_bg);
+        span {
+            color: #2580ff;
+        }
+        svg {
+            transform: translateX(-5px);
+        }
+    }
+}

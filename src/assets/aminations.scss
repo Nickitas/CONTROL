@@ -1,0 +1,226 @@
+
+@mixin bounceInLeft {
+    @-webkit-keyframes bounceInLeft {
+        from, 60%, 75%, 90%,
+        to {
+          -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+          animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        0% {
+          opacity: 0;
+          -webkit-transform: translate3d(-3000px, 0, 0);
+          transform: translate3d(-3000px, 0, 0);
+        }
+        60% {
+          opacity: 1;
+          -webkit-transform: translate3d(25px, 0, 0);
+          transform: translate3d(25px, 0, 0);
+        }
+        75% {
+          -webkit-transform: translate3d(-10px, 0, 0);
+          transform: translate3d(-10px, 0, 0);
+        }
+        90% {
+          -webkit-transform: translate3d(5px, 0, 0);
+          transform: translate3d(5px, 0, 0);
+        }
+        to {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+    }
+      
+    @keyframes bounceInLeft {
+        from, 60%, 75%, 90%,
+        to {
+          -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+          animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        0% {
+          opacity: 0;
+          -webkit-transform: translate3d(-3000px, 0, 0);
+          transform: translate3d(-3000px, 0, 0);
+        }
+        60% {
+          opacity: 1;
+          -webkit-transform: translate3d(25px, 0, 0);
+          transform: translate3d(25px, 0, 0);
+        }
+        75% {
+          -webkit-transform: translate3d(-10px, 0, 0);
+          transform: translate3d(-10px, 0, 0);
+        }
+        90% {
+          -webkit-transform: translate3d(5px, 0, 0);
+          transform: translate3d(5px, 0, 0);
+        }
+      
+        to {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+    }
+      
+    .bounceInLeft {
+        -webkit-animation-name: bounceInLeft;
+        animation-name: bounceInLeft;
+    }
+}
+
+
+
+@mixin zoomIn {
+    @-webkit-keyframes zoomIn {
+        from {
+          opacity: 0;
+          -webkit-transform: scale3d(0.3, 0.3, 0.3);
+          transform: scale3d(0.3, 0.3, 0.3);
+        }
+        50% {
+          opacity: 1;
+        }
+    }
+    @keyframes zoomIn {
+        from {
+          opacity: 0;
+          -webkit-transform: scale3d(0.3, 0.3, 0.3);
+          transform: scale3d(0.3, 0.3, 0.3);
+        }
+        50% {
+          opacity: 1;
+        }
+    }
+      
+    .zoomIn {
+        -webkit-animation-name: zoomIn;
+        animation-name: zoomIn;
+    }
+}
+
+
+
+@mixin fadeOut {
+    @-webkit-keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+    }
+    @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+      
+        to {
+          opacity: 0;
+        }
+    }
+      
+    .fadeOut {
+        -webkit-animation-name: fadeOut;
+        animation-name: fadeOut;
+    }
+}
+
+
+
+
+
+// Покачивания в стороны
+@mixin swing {
+    @-webkit-keyframes swing {
+        0% { transform: rotate(5deg); }
+        12.5% { transform: rotate(-10deg); }
+        25% { transform: rotate(10deg); }
+        37.5% { transform: rotate(-15deg); }
+        50% { transform: rotate(23deg); }
+        62.5% { transform: rotate(-23deg); }
+        75% { transform: rotate(15deg); }
+        87.5% { transform: rotate(-10deg); }
+        100% { transform: rotate(5deg); }
+    }
+    @keyframes swing {
+        0% { transform: rotate(5deg); }
+        12.5% { transform: rotate(-10deg); }
+        25% { transform: rotate(10deg); }
+        37.5% { transform: rotate(-15deg); }
+        50% { transform: rotate(23deg); }
+        62.5% { transform: rotate(-23deg); }
+        75% { transform: rotate(15deg); }
+        87.5% { transform: rotate(-10deg); }
+        100% { transform: rotate(5deg); }
+    }
+}
+
+
+
+@mixin swing2 {
+    @-webkit-keyframes swing2 {
+        25% {transform: rotate(-5deg);}
+        75% {transform :rotate(5deg);}
+        100% {transform: rotate(0deg);}
+    }
+    @keyframes swing2 {
+        25% {transform: rotate(-5deg);}
+        75% {transform :rotate(5deg);}
+        100% {transform: rotate(0deg);}
+    }
+}
+
+
+
+// Движения вверх-вниз
+@mixin bounce-updown {
+    @-webkit-keyframes bounce-updown {
+        25% { transform: translateY(-3px); }
+        50%, 100% { transform: translateY(0); }
+        75% { transform: translateY(1px); }
+    }
+    @keyframes bounce-updown {
+        25% { transform: translateY(-3px); }
+        50%, 100% { transform: translateY(0); }
+        75% { transform: translateY(1px); }
+    }
+}
+
+
+
+// Вращение аокруг оси
+@mixin spin {
+    @keyframes spin {
+        from { transform:rotate(0deg); }
+        to { transform:rotate(360deg); }
+    }
+    @-moz-keyframes spin {
+        from { -moz-transform: rotate(0deg); }
+        to { -moz-transform: rotate(360deg); }
+    }
+    @-webkit-keyframes spin {
+        from { -webkit-transform: rotate(0deg); }
+        to { -webkit-transform: rotate(360deg); }
+    }
+    @-ms-keyframes spin {
+        from { -ms-transform: rotate(0deg); }
+        to { -ms-transform: rotate(360deg); }
+    }
+}
+
+
+// -webkit-animation-name: spin;
+// -webkit-animation-duration: 4000ms;
+// -webkit-animation-iteration-count: infinite;
+// -webkit-animation-timing-function: linear;
+// -moz-animation-name: spin;
+// -moz-animation-duration: 4000ms;
+// -moz-animation-iteration-count: infinite;
+// -moz-animation-timing-function: linear;
+// -ms-animation-name: spin;
+// -ms-animation-duration: 4000ms;
+// -ms-animation-iteration-count: infinite;
+// -ms-animation-timing-function: linear;
+// animation-name: spin;
+// animation-duration: 4000ms;
+// animation-iteration-count: infinite;
+// animation-timing-function: linear;

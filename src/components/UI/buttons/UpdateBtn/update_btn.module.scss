@@ -1,0 +1,29 @@
+
+.update_btn {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    background: var(--theme_bg);
+    border-radius: 15px;
+    user-select: none;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    &:hover, &:focus { 
+        background: #5d6985; 
+    }
+    
+    svg {
+        margin: 0 auto;
+        width: 50%;
+        height: 50%;
+        transition: all .2s ease-in-out;
+    }
+
+    &:hover svg { 
+        transform: rotate(180deg); 
+    }
+}

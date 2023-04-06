@@ -1,0 +1,227 @@
+@import '../../../assets/mixins/responsive_font.scss';
+
+
+.table_container {
+    position: relative;
+    margin: 2rem auto;
+    width: 100%;
+}
+
+.shrink_btn {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: var(--ex_color);
+    border-radius: 50%;
+    color: #fff;
+    svg {
+        transition: all .2s ease-in-out;
+    }
+
+    &:hover {
+        cursor: pointer;
+        svg {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.table_wrapp {
+    padding: 10px 10px 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-radius: 15px;
+    box-shadow: 0px 0px 44px -6px var(--hover);
+    -webkit-box-shadow: 0px 0px 44px -6px var(--hover);
+    -moz-box-shadow: 0px 0px 44px -6px var(--hover);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    background-color: var(---main_bg);
+}
+
+.table caption {
+    padding: 6px 35px;
+    font-size: 12px;
+    text-align: left;
+    opacity: .7;
+    border-bottom: 2px solid var(--line);
+}
+
+
+
+.table .thead,
+.table .tbody {
+    padding: 10px;
+}
+
+
+.table .thead {
+    padding: 10px;
+    border-radius: 15px 15px 0 0;
+}
+
+
+.table .table_row {
+    border-bottom: 1px solid var(--line);
+}
+
+
+
+.table .thead .thead_cell,
+.table .tbody .tbody_cell {
+    padding: 20px 12px;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.table .thead .thead_cell {
+    .line {
+        margin-left: -5px;
+        padding-left: 5px;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+    }
+    span {
+        margin: auto 5px auto 0;
+        font-weight: 900;
+        vertical-align: middle;
+        user-select: none;
+    }
+    cursor: pointer;
+    .icon {
+        display: flex;
+        align-items: center;
+        svg {
+            transition: all .1s ease-in;
+            visibility: hidden;
+        }
+    }
+    &:hover {
+        .icon svg {
+            transition: all .1s ease-out;
+            visibility: visible;
+        }
+    }
+    .icon.iconRot svg {
+        transform: rotate(180deg);
+    }
+
+    &:nth-last-child(-n+2) {
+        .icon {
+            display: none;
+        }
+    }
+}
+
+
+
+.table .tbody .tbody_cell {
+    font-weight: 500;
+    &:hover {
+        background-color: var(--hover);
+    }
+}
+
+
+.empty_cell {
+    padding: 45px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include responsive_font(24, 18);
+    font-weight: 600;
+    text-align: center;
+    color: var(--grey_text);
+    user-select: none;
+    
+    svg {
+        margin-right: 8px;
+    }
+}
+
+
+
+@media (max-width:697px) {
+    .table_wrapp {
+        padding: 0 0 10px;
+    }
+
+    .table {
+        display: block;
+        width: 100%;
+    }
+
+    .table caption {
+        padding: 0 12px 6px;
+        border-bottom: none;
+    }
+
+    .table .thead,
+    .table .tbody,
+    .table .thead .thead_cell {
+        display: block;
+    }
+
+    .table .thead {
+        float: left;
+        .line {
+            justify-content: flex-start !important;
+        }
+    }
+
+    .table .tbody {
+        overflow-x: auto;
+    }
+
+    .table .tbody .table_row {
+        display: table-cell;
+        border-right: 1px solid var(--line);
+        &:last-child {
+            border-right: none;
+        }
+    }
+
+    .table .tbody_cell {
+        display: block;
+    }
+
+    .table .thead .thead_cell,
+    .table .tbody .tbody_cell {
+        padding: 10px 8px;
+        width: 160px;
+        font-size: 12px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+    }
+
+    .table .tbody .tbody_cell {
+        min-height: 45px;
+        text-align: center !important;
+    }
+}
+
+
+.table.shrink {
+    .thead .thead_cell {
+        font-size: 14px;
+    }
+    .thead .thead_cell,
+    .tbody .tbody_cell {
+        padding: 2px 5px;
+        min-height: 39px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,23 @@
+
+
+.rooms_list {
+
+    .row {
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 1920px;
+    }
+}
+
+.accordions_wrapper {
+    & > div ~ div {
+        margin-top: 10px;
+    }
+}
+
+.table_wrapper {
+    margin-top: 10px;
+}
