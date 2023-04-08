@@ -42,7 +42,7 @@ const ModalEditRoom = ({ data, setVisible, setAlertState, cb }) => {
     }, [])
 
     const handleEditRommSend = async (obj) => {
-        const editRoomSend = async (obj) => {
+        const editRoomSend = async () => {
             try {
                 const response = await axiosPrivate.post(`/housekeeper/rooms/${obj._id}`, { obj })
                 if (response?.status === 200) {
@@ -51,6 +51,7 @@ const ModalEditRoom = ({ data, setVisible, setAlertState, cb }) => {
                         message: `Изменения аудитории приняты!`
                     })
                     setVisible(false)
+                    cb()
                 }
             } catch (err) {
                 if (!err?.response) {
@@ -68,8 +69,7 @@ const ModalEditRoom = ({ data, setVisible, setAlertState, cb }) => {
                 }
             }
         }
-        editRoomSend(obj)
-        cb()
+        editRoomSend()
     }
 
 
@@ -81,42 +81,42 @@ const ModalEditRoom = ({ data, setVisible, setAlertState, cb }) => {
             <ModalBody>
                 <ModalRow>
                     <Input name='building'
-                        lable='Корпус...'
-                        value={roomData.building}
+                        label='Корпус...'
+                        value={roomData.building || ''}
                         onChange={e => setRoomData({ ...roomData, building: e.target.value })}
                         required
                     />
                     <Input name='room'
-                        lable='Комната...'
-                        value={roomData.room}
+                        label='Комната...'
+                        value={roomData.room || ''}
                         onChange={e => setRoomData({ ...roomData, room: e.target.value })}
                         required
                     />
                 </ModalRow>
                 <ModalRow>
                     <Input name='subunit'
-                        lable='Подразделение...'
-                        value={roomData.subunit}
+                        label='Подразделение...'
+                        value={roomData.subunit || ''}
                         onChange={e => setRoomData({ ...roomData, subunit: e.target.value })}
                         required
                     />
                     <Input name='type'
-                        lable='Тип...'
-                        value={roomData.type}
+                        label='Тип...'
+                        value={roomData.type || ''}
                         onChange={e => setRoomData({ ...roomData, type: e.target.value })}
                         required
                     />
                 </ModalRow>
                 <ModalRow>
                     <Input name='head'
-                        lable='Ответственный...'
-                        value={roomData.head}
+                        label='Ответственный...'
+                        value={roomData.head || ''}
                         onChange={e => setRoomData({ ...roomData, head: e.target.value })}
                         required
                     />
                     <Input name='phone'
-                        lable='Телефон...'
-                        value={roomData.phone}
+                        label='Телефон...'
+                        value={roomData.phone || ''}
                         onChange={e => setRoomData({ ...roomData, phone: e.target.value })}
                         required
                     />

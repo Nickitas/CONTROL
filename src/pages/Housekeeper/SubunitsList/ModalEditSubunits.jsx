@@ -14,7 +14,6 @@ const ModalEditSubunits = ({ data, setVisible, setAlertState, cb }) => {
     const axiosPrivate = useAxiosPrivate()
     const [subunitData, setSubunitData] = useState({})
 
-    console.log(subunitData)
     const validation = (obj) => !Object.values(obj).includes('')
 
 
@@ -43,7 +42,7 @@ const ModalEditSubunits = ({ data, setVisible, setAlertState, cb }) => {
     }, [])
 
     const handleEditSubunitSend = async (obj) => {
-        const editSubunitSend = async (obj) => {
+        const editSubunitSend = async () => {
             try {
                 const response = await axiosPrivate.post(`/housekeeper/subunits/${obj._id}`, { obj })
                 if (response?.status === 200) {
@@ -52,6 +51,7 @@ const ModalEditSubunits = ({ data, setVisible, setAlertState, cb }) => {
                         message: `Изменения подразделения приняты!`
                     })
                     setVisible(false)
+                    cb()
                 }
             } catch (err) {
                 if (!err?.response) {
@@ -69,8 +69,7 @@ const ModalEditSubunits = ({ data, setVisible, setAlertState, cb }) => {
                 }
             }
         }
-        editSubunitSend(obj)
-        cb()
+        editSubunitSend()
     }
 
 
@@ -82,36 +81,36 @@ const ModalEditSubunits = ({ data, setVisible, setAlertState, cb }) => {
             <ModalBody>
                 <ModalRow>
                     <Input name='subunit'
-                        lable='Подразделение...'
-                        value={subunitData.complete}
+                        label='Подразделение...'
+                        value={subunitData.complete || ''}
                         onChange={e => setSubunitData({ ...subunitData, complete: e.target.value })}
                         required
                     />
                 </ModalRow>
                 <ModalRow>
                     <Input name='sub_short'
-                        lable='Краткое название...'
-                        value={subunitData.shortcut}
+                        label='Краткое название...'
+                        value={subunitData.shortcut || ''}
                         onChange={e => setSubunitData({ ...subunitData, shortcut: e.target.value })}
                         required
                     />
                     <Input name='head'
-                        lable='Ответственный...'
-                        value={subunitData.responsible_fio}
+                        label='Ответственный...'
+                        value={subunitData.responsible_fio || ''}
                         onChange={e => setSubunitData({ ...subunitData, responsible_fio: e.target.value })}
                         required
                     />
                 </ModalRow>
                 <ModalRow>
                     <Input name='phone'
-                        lable='Телефон...'
-                        value={subunitData.responsible_phone}
+                        label='Телефон...'
+                        value={subunitData.responsible_phone || ''}
                         onChange={e => setSubunitData({ ...subunitData, responsible_phone: e.target.value })}
                         required
                     />
                     <Input name='email'
-                        lable='Эл. почта...'
-                        value={subunitData.responsible_email}
+                        label='Эл. почта...'
+                        value={subunitData.responsible_email || ''}
                         onChange={e => setSubunitData({ ...subunitData, responsible_email: e.target.value })}
                         required
                     />

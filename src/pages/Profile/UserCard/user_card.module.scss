@@ -1,0 +1,95 @@
+
+
+.user_card {
+    display: flex;
+    flex-direction: column;
+
+    .pic {
+        position: relative;
+        margin-bottom: 20px;
+        display: flex;
+        max-width: 400px;
+        min-width: 220px;
+        width: 17.6vw;
+    }
+
+    .img_wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 17.6vw;
+        height: 17.6vw;
+        max-width: 400px;
+        max-height: 400px;
+        min-width: 220px;
+        min-height: 220px;
+        border: 3px solid var(--ex2_color);
+        border-radius: 50%;
+        overflow: hidden;
+
+        img, div {
+            width: 100%;
+            height: 100%;
+            max-height: none !important;
+            max-width: none !important;
+        }
+    }
+
+    .status {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        border: 2px solid var(--ex2_color);
+        background-color: var(--main_bg);
+        user-select: none;
+        transition: all .4s ease-in-out;
+
+        span {
+            opacity: 0;
+            width: 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--logo_color);
+            transition: width .4s ease-in-out;
+        }
+
+        &:hover {
+            transition: all .2s ease-out;
+            border: 2px solid #2580ff;
+            width: auto;
+            span {
+                transition: width .2s ease-out;
+                padding: 4px 6px;
+                opacity: 1;
+                width: auto;
+            }
+        }
+    }
+
+    .user {
+        margin-bottom: 20px;
+        h2 {
+            margin-bottom: 0;
+        }   
+        p {
+            opacity: .6;
+        }
+    }
+}
+
+.accordions_wrapper {
+    & > div ~ div {
+        margin-top: 10px;
+    }
+
+    // внеш отступы у таблицы
+    & > div > div:last-child > div {
+        margin: 0;
+    }
+}

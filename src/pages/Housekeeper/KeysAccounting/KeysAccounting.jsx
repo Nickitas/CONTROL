@@ -5,18 +5,11 @@ import jwt_decode from 'jwt-decode'
 import { Alert } from '../../../components/UI/Alert/Alert'
 import { Loading } from '../../../components/UI/loadings/Loading/Loading'
 import { LoadingSm } from '../../../components/UI/loadings/LoadingSm/LoadingSm'
-import axios from '../../../api/axios'
 import { Bell } from '../../../components/svg.module'
 import defaultperson from '../../../assets/images/pic/defaultperson.svg'
 import classes from './keys_accounting.module.scss'
 
-// 00B4C5048296
-// 0001064D55B2
-// 03203395331B
-// 00569854CC6E
-// 0120CEEEBF04
-// 0099DAE5FD44
-// 0099DAE5FD44
+
 
 const KeyBtn = (props) => {
     const [awaite, setAwaite] = useState(false)
@@ -66,51 +59,79 @@ const KeyBtn = (props) => {
 
 
 
+
+
+
+
+
+// housekeeper/user_keys/:key
+// housekeeper/update_key_status
+// housekeeper/update_signal_status
+// housekeeper/kit_keys
+
+
+// 00B4C5048296
+// 0001064D55B2
+// 03203395331B
+// 00569854CC6E
+// 0120CEEEBF04
+// 0099DAE5FD44
+// 0099DAE5FD44
+
+
 const KeysAccounting = () => {
+    const hiddenInputRef = useRef()
     const { auth } = useAuth()
     const axiosPrivate = useAxiosPrivate()
-    const hiddenInputRef = useRef()
 
-    const [personData, setPersonData] = useState([])
     // ФИО, фотка, должность, подразделение, кол-во нарушений
+    const [personData, setPersonData] = useState([])
+    const [availabelKeys, setAvailabelKeys] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
-    const setPersonPic = () => {
-        // ({background:`no-repeat url(${data?.body?.person?.avatar ? data.body.person.avatar : defaultperson}) center center`})
-    }
-
-    useEffect(() => {
-        setInterval(() => {
-            hiddenInputRef.current.focus()
-            hiddenInputRef.current.value = ''
-        }, 2000)
-    }, [])
-
-    const getPersonAvailableKeys = async (e) => {
-        let key = e.target.value
-        if (key.length != 12) return
-        console.log(key)
-        // try {
-        //     const response = await axios.post('/get_keys',
-        //         JSON.stringify({ key }),
-        //         {
-        //             headers: { 'Content-Type': 'application/json' },
-        //         }
-        //     )
-        //     setPersonData(response?.data)
-        // 
-        // } catch(err) {
-        //     if(!err?.response) {
-        //         console.log('Нет ответа от сервера')
-        //     } else {
-        //         console.error(err)
-        //     }
-        // }
-    }
+    const [alertState, setAlertState] = useState({ show: false, type: '', message: '' })
 
     const decoded = auth?.accessToken
         ? jwt_decode(auth.accessToken)
         : undefined
     const userRole = decoded?.UserInfo?.roles || []
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            if (hiddenInputRef.current) {
+                hiddenInputRef.current.focus()
+                hiddenInputRef.current.value = ''
+            }
+        }, 2000)
+    
+        return () => clearInterval(intervalId)
+    }, [])
+
+    const isValidKey = key => {
+        const regex = /^[0-9A-Za-z]{12}$/
+        return regex.test(key)
+    }
+
+    const getPersonAvailabelKeys = async (e) => {
+        let key = e.target.value
+        if (isValidKey(key)) {
+            try {
+                const response = await axiosPrivate.get(`/housekeeper/user_keys/${key}`)
+                setPersonData(response?.data.person)
+                
+            } catch (err) {
+                if(!err?.response) {
+                    if (!err?.response) console.log(`No response from server`)
+                } else {
+                    console.error(err)
+                }
+            }
+        }
+    }
+
+    const setPersonPic = () => {
+        // ({background:`no-repeat url(${data?.body?.person?.avatar ? data.body.person.avatar : defaultperson}) center center`})
+    }
 
     const keys_accounting = (
         <section className={classes.keys_accounting}>
@@ -121,7 +142,7 @@ const KeysAccounting = () => {
             <input className={classes.hiddeninput}
                 autoFocus
                 ref={hiddenInputRef}
-                onChange={getPersonAvailableKeys}
+                onChange={getPersonAvailabelKeys}
             />
 
             <div className={classes.workplace}>
@@ -131,14 +152,14 @@ const KeysAccounting = () => {
                         {/* <div className={classes.front} style={setPersonPic}> */}
                         <div className={classes.front}>
                             <div className={classes.person_name}>
-                               { 'Ремизов Н. С.' }
+                               { personData.fio }
                             </div>
                         </div>
                         <div className={classes.back}>
                             <div className={classes.person_info}>
-                                <p><b>Должность:</b> { 'Должность' }</p>
-                                <p><b>Подразделение:</b> { 'Подразделение' }</p>
-                                <p><b>Кол-во нарушений:</b> {Math.round((Math.random() * (10 - 1) + 1), 1)}</p>
+                                <p>{ personData.position }</p>
+                                <p>{ personData.department }</p>
+                                <p><b>Нарушений:</b> {Math.round((Math.random() * (10 - 1) + 1), 1)}</p>
                             </div>
                         </div>
                     </div>
@@ -165,7 +186,10 @@ const KeysAccounting = () => {
                 </div>
             </div>
 
-
+            <Alert 
+                alertState={alertState} 
+                setAlertState={setAlertState} 
+            />
 
         </section>
     )

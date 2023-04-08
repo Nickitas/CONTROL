@@ -18,8 +18,6 @@ import { Button } from '../../../components/UI/buttons/Button/Button'
 import { Loading } from '../../../components/UI/loadings/Loading/Loading'
 import { TrashCanIcon, InfoIcon } from '../../../components/svg.module'
 
-// 0120CEEF0B09
-// 0120CEEEBF04
 
 const ModalWorkers = ({ data, setVisible, setAlertState }) => {
     const axiosPrivate = useAxiosPrivate()
@@ -31,6 +29,7 @@ const ModalWorkers = ({ data, setVisible, setAlertState }) => {
     const [sortedField, setSortedField] = useState('')
     const [sortDirection, setSortDirection] = useState('asc')
 
+    
     const getWorkers = async () => {
         try {
             const response = await axiosPrivate.get(`/housekeeper/rooms/${data.id}/permissions`)
@@ -64,7 +63,7 @@ const ModalWorkers = ({ data, setVisible, setAlertState }) => {
     }, [])
 
     const handlePermissionOnRoomAdd = async (cardKey, roomId) => {
-        const permissionOnRoomAdd = async (cardKey, roomId) => {
+        const permissionOnRoomAdd = async () => {
             try {
                 const response = await axiosPrivate.post(`/housekeeper/permissions`, {  user_key: cardKey, room_id: roomId })
                 if (response?.status === 205) {
@@ -79,6 +78,7 @@ const ModalWorkers = ({ data, setVisible, setAlertState }) => {
                         show: true,
                         message: `Сотрудник добавлен по ключу ${cardKey}!`
                     })
+                    setCardKey('')
                     getWorkers()
                 }
             } catch (err) {
@@ -97,12 +97,11 @@ const ModalWorkers = ({ data, setVisible, setAlertState }) => {
                 }
             }   
         }
-        permissionOnRoomAdd(cardKey, roomId)
-        setCardKey('')
+        permissionOnRoomAdd()
     }
 
     const handlePermissionOnRoomRemove = async (roomId, cardKey) => {
-        const permissionOnRoomRemove = async (roomId, cardKey) => {
+        const permissionOnRoomRemove = async () => {
             try {
                 const response = await axiosPrivate.post(`/housekeeper/permissions/delete`, { room_id: roomId, user_key: cardKey })
                 if (response?.status === 200) {
@@ -131,7 +130,7 @@ const ModalWorkers = ({ data, setVisible, setAlertState }) => {
                 }
             }
         }
-        permissionOnRoomRemove(roomId, cardKey)
+        permissionOnRoomRemove()
     }
 
     const handleSortClick = (field) => {
@@ -165,7 +164,7 @@ const ModalWorkers = ({ data, setVisible, setAlertState }) => {
             <ModalBody>
                 <ModalRow>
                     <Input name='card_key'
-                        lable='Карточка сотрудника...'
+                        label='Карточка сотрудника...'
                         value={cardKey}
                         onChange={e => setCardKey(ee => e.target.value)}
                         required

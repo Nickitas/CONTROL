@@ -12,12 +12,12 @@ const InputPassword = forwardRef(({ ...props }, forwardedRef) => {
             <input className={classes.input_password} 
                 { ...props } 
                 ref={ forwardedRef }
-                placeholder={props.lable} 
+                placeholder={props.label} 
                 type={showPassword ? 'text' : 'password'}
                 current-password='true'
             />
             <label className={classes.label}>
-                { props.lable }
+                { props.label }
             </label>
             <div className={classes.icon} onClick={() => setShowPassword(e => !e)}>
                 { showPassword ? <HideIcon/> : <EyeIcon/>}

@@ -1,6 +1,33 @@
 
 
-
-.Profile {
+.profile {
+    padding-bottom: 40px;
     
+    .row {
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 1920px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        align-items: stretch;
+        justify-items: stretch;
+        gap: 40px;
+
+        @media (max-width: 1266px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}
+
+.accordions_wrapper {
+    & > div ~ div {
+        margin-top: 10px;
+    }
 }

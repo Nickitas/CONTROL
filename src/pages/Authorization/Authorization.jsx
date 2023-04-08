@@ -100,7 +100,7 @@ const Authorization = () => {
                     </div>
                     <div className={classes.body}>
                         <Input name='login'
-                            lable='Логин'
+                            label='Логин'
                             type='text'
                             id='username'
                             value={user}
@@ -112,7 +112,7 @@ const Authorization = () => {
                         {
                             anotherEntry ? (
                                 <InputPassword name='password'
-                                    lable='Пароль' 
+                                    label='Пароль' 
                                     type='password'
                                     id='password'
                                     value={pwd}

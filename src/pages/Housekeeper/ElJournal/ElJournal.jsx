@@ -157,7 +157,7 @@ const ElJournal = () => {
                     <AccordionDetails>
                         <UpdateBtn setData={getElJournal}/>
                         <Input name='query_text'
-                            lable='Поисковой запрос...'
+                            label='Поисковой запрос...'
                             value={queryText}
                             onChange={e => setQueryText(e.target.value)}
                         />

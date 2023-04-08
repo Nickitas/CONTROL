@@ -143,7 +143,7 @@ const Disturbers = () => {
                     <AccordionDetails>
                         <UpdateBtn setData={getDisturbers}/>
                         <Input name='query_text'
-                            lable='Поисковой запрос...'
+                            label='Поисковой запрос...'
                             value={queryText}
                             onChange={e => setQueryText(e.target.value)}
                         />

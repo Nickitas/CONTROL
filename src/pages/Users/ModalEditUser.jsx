@@ -49,6 +49,7 @@ const ModalEditUser = ({ data, setVisible, setAlertState, cb }) => {
                         message: `Изменения данных приняты!`
                     })
                     setVisible(false)
+                    cb()
                 } 
             } catch (err) {
                 if (!err?.response) {
@@ -67,7 +68,6 @@ const ModalEditUser = ({ data, setVisible, setAlertState, cb }) => {
             }
         }
         editUserSend()
-        cb()
     }
 
 
@@ -79,33 +79,33 @@ const ModalEditUser = ({ data, setVisible, setAlertState, cb }) => {
             <ModalBody>
                 <ModalRow>
                     <Input name='surname'
-                        lable='Фамилия...'
-                        value={userData?.surname}
+                        label='Фамилия...'
+                        value={userData?.surname || ''}
                         onChange={e => setUserData({ ...userData, surname: e.target.value })}
                         required
                     />
                     <Input name='name'
-                        lable='Имя...'
-                        value={userData?.name}
+                        label='Имя...'
+                        value={userData?.name || ''}
                         onChange={e => setUserData({ ...userData, name: e.target.value })}
                         required
                     />
                     <Input name='lastname'
-                        lable='Отчество...'
-                        value={userData?.lastname}
+                        label='Отчество...'
+                        value={userData?.lastname || ''}
                         onChange={e => setUserData({ ...userData, lastname: e.target.value })}
                     />
                 </ModalRow>
                 <ModalRow>
                     <Input name='subunit'
-                        lable='Подразделение...'
-                        value={userData?.subunit}
+                        label='Подразделение...'
+                        value={userData?.subunit || ''}
                         onChange={e => setUserData({ ...userData, subunit: e.target.value })}
                         required
                     />
                     <Input name='room'
-                        lable='Аудитория...'
-                        value={userData?.room}
+                        label='Аудитория...'
+                        value={userData?.room || ''}
                         onChange={e => setUserData({ ...userData, room: e.target.value })}
                         required
                     />
@@ -131,28 +131,28 @@ const ModalEditUser = ({ data, setVisible, setAlertState, cb }) => {
                 </ModalRow>
                 <ModalRow>
                     <Input name='phone'
-                        lable='Телефон...'
-                        value={userData?.phone}
+                        label='Телефон...'
+                        value={userData?.phone || ''}
                         onChange={e => setUserData({ ...userData, phone: e.target.value })}
                         required
                     />
                     <Input name='email'
-                        lable='Почта...'
-                        value={userData?.email}
+                        label='Почта...'
+                        value={userData?.email || ''}
                         onChange={e => setUserData({ ...userData, email: e.target.value })}
                         required
                     />
                 </ModalRow>
                 <ModalRow>
                     <Input name='login'
-                        lable='Логин...'
-                        value={userData?.login}
+                        label='Логин...'
+                        value={userData?.login || ''}
                         onChange={e => setUserData({ ...userData, login: e.target.value })}
                         required
                     />
                     <Input name='password'
-                        lable='Пароль...'
-                        value={userData?.password}
+                        label='Пароль...'
+                        value={userData?.password || ''}
                         onChange={e => setUserData({ ...userData, password: e.target.value })}
                         required
                     />

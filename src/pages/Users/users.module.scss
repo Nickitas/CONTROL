@@ -19,17 +19,30 @@
     }
 }
 
+.loading_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
 .table_wrapper {
     margin-top: 10px;
 }
 
 .pic_wrapp {
+    margin: 0 auto;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     border: 3px solid var(--hover);
     overflow: hidden;
     cursor: pointer;
+    
+    @media (max-width: 698px) {
+        width: 24px;
+        height: 24px;
+    }
     
     img {
         width: 100%;

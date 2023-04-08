@@ -83,7 +83,7 @@ const SubunitsList = () => {
     }, [])
 
     const handleDeleteSubunit = async (id) => {
-        const deleteSubunit = async (id) => {
+        const deleteSubunit = async () => {
             try {
                 const response = await axiosPrivate.post('/housekeeper/subunits/delete', { id })
                 if (response?.status === 200) {
@@ -119,7 +119,7 @@ const SubunitsList = () => {
                 }
             }
         }
-        deleteSubunit(id)
+        deleteSubunit()
     }
 
     const handleSubunitEditOpen = (id, subunit) => {
@@ -178,7 +178,7 @@ const SubunitsList = () => {
                     <AccordionDetails>
                         <UpdateBtn setData={getSubunitsList}/>
                         <Input name='query_text'
-                            lable='Поисковой запрос...'
+                            label='Поисковой запрос...'
                             value={queryText}
                             onChange={e => setQueryText(e.target.value)}
                         />

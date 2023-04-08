@@ -9,8 +9,8 @@ const Input = forwardRef(({ ...props }, forwardedRef) => {
             <input className={classes.input} 
                 ref={ forwardedRef }
                 { ...props } 
-                placeholder={ props.lable } />
-            <label className={classes.label}>{ props.lable }</label>
+                placeholder={ props.label } />
+            <label className={classes.label}>{ props.label }</label>
         </div>
     )
 })

@@ -18,20 +18,21 @@
         display: flex;
         align-items: baseline;
         justify-content: center;
-        color: #fff;
+        color: var(-logo_color);
     }
 
     .action {
         font-family: inherit;
-        @include responsive_font(14, 10);
+        @include responsive_font(14, 8);
         font-weight: 600;
         line-height: 1.5;
         white-space: nowrap;
-        color: #fff;
+        color: var(-logo_color);
     }
 
     &:hover, &:focus {
         background: #5d6985;
         border: 2px solid #5d6985;
+        color: #fff;
     }
 }

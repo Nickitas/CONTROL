@@ -19,8 +19,8 @@ const Housekeeper = () => {
     const decoded = auth?.accessToken
         ? jwt_decode(auth.accessToken)
         : undefined
-
     const userRole = decoded?.UserInfo?.roles || []
+    
     
     const housekeeper = (
         <section className={classes.housekeeper}>

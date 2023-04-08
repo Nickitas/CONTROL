@@ -1,0 +1,70 @@
+
+
+
+.table_frame {
+    border-radius: 16px;
+    border: 2px solid var(--ex2_color);
+    background-color: transparent;
+    overflow: hidden;
+
+    &.edit_mode {
+        border: 2px dashed #2580ff;
+    }
+
+    .container, .baner {
+        padding: 24px;
+    }
+
+    .baner {
+        position: relative;
+        background: url('https://static.tildacdn.com/tild3433-6539-4034-b032-326164313836/shapka_profkoma_Mont.png');
+        background-position: center;
+        background-size: contain;
+        background-attachment: fixed;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            z-index: 9;
+            width: 75px;
+            height: 75px;
+            background: url(../../assets/images/icons/dstu.svg);
+            background-size: cover;
+        }
+
+        .blure {
+            padding: 12px 20px;
+            border-radius: 26px;
+            background-color: var(--baner_bg);
+            backdrop-filter: blur(4px);
+
+            h1 { margin: 0; }
+        }
+    }
+
+    .read_info, .edit_info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .category {
+            padding: 8px 12px;
+            ul.list {
+                margin-top: 8px;
+                padding-top: 6px;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                border-top: 1px solid var(--line);
+
+                li.item {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 12px;
+                }
+            }
+        }
+    }
+}

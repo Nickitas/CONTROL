@@ -1,8 +1,10 @@
 @import '../../../assets/mixins/responsive_font.scss';
 @import '../../../assets/mixins/typography.scss';
 
+
 .keys_accounting {
-    
+    margin: 0 auto;
+
     .row {
         margin: 0 auto;
         display: flex;
@@ -21,10 +23,10 @@
     display: flex;
     align-items: stretch;
     justify-content: space-between;
+    gap: 40px;
 
 
     .person_block {
-        margin-right: 2.4em;
         flex-grow: 1;
         
 
@@ -40,15 +42,15 @@
 .card {
     position: relative;
     margin: 10px 0;
-    max-width: 360px;
+    // max-width: 360px;
     perspective: 1000px;
 
     .front, .back {
         position: absolute;
         top: 0;
         left: 0;
-        max-width: 360px;
-        max-height: 480px;
+        // max-width: 360px;
+        // max-height: 480px;
         width: 18.75vw;
         height: 25vw;
         min-width: 226px;
@@ -66,16 +68,17 @@
         background: no-repeat url(../../../assets/pic/defaultperson.svg) center center;
         background-size: contain !important;
         overflow: hidden;
+        
         .person_name {
             position: absolute;
             bottom: 0;
             width: 100%;
             right: 0;
-            padding: 5px 10px;
-            backdrop-filter: 50px;
-            background: rgba(255, 255, 255, 0.7);
-            @include subtitle;
             margin: 0;
+            padding: 5px 10px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: 50px;
+            @include subtitle;
             color: #000;
             font-size: 16px;
             text-align: left;
@@ -89,6 +92,7 @@
         align-items: flex-start;
         justify-content: center;
         transform: rotateY(180deg);
+        
         .person_info {
             display: flex;
             flex-direction: column;

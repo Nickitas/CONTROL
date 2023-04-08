@@ -14,6 +14,17 @@ const Home = () => {
         }, 4500)
     }, [])
 
+    async function _() {
+        try {
+            const response = await fetch('https://api.ipify.org/?format=json')
+            const data = await response.json()
+            localStorage.setItem('ip-address', data.ip)
+            return data.ip
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     const handlerCopyDevLink = (name) => {
         navigator.clipboard.writeText(name)
         .then(() => setAlertState({

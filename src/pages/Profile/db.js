@@ -1,0 +1,33 @@
+const user = {
+    id: '628bd0b197b53279123ffdd2',
+    surname: 'Кодацкий',
+    name: 'Никита',
+    lastname: 'Максимович',
+    ava: 'https://pikuco.ru/upload/test_stable/96d/96d01aba12f9a99d9c0362b263d03969.jpg',
+    status: ['👋', 'Работаю', [' ', ' ']],
+    post: 'Инженер-программист',
+    subunit: 'Отдел систем технического контроля',
+    workers: [{
+        id: 'sd8o7dsa78dsa7dsfa',
+        fio: '',
+        post: '',
+        working_rate: 1,
+        type_of_employment: '',
+        is_dismissal: false,
+        // edit
+        // del        
+    }],
+    room: '1-391а',
+    role: 'Admin',
+    block: false,
+    phone: '89673180303',
+    email: 'nickitadatsky@gmail.com',
+    // skype: '',
+    // isq: '',
+    telegram: 'https://t.me/Nidatsky', 
+    login: 'nickitakod',
+    password: 'XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg',
+    reg: '10.05.2022',
+    last_ip: '127.0.0.1',
+    last_online: '07.03.2023:',
+}

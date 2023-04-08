@@ -92,7 +92,7 @@ const RoomsList = () => {
 
 
     const handleNewRommSend = async (obj) => {
-        const newRoomSend = async (obj) => {
+        const newRoomSend = async () => {
             try {
                 const response = await axiosPrivate.post('/housekeeper/rooms', obj)
                 if (response?.status === 200) {
@@ -101,6 +101,7 @@ const RoomsList = () => {
                         message: `Аудитория ${obj.building}-${obj.room} добавлена!`
                     })
                     setNewRoom({ building: '', room: '', subunit: '', type: '', head: '', phone: '', signaling: '' })
+                    getRoomsList()
                 }
                 else if(response?.status === 204) {
                     setAlertState({ 
@@ -125,13 +126,12 @@ const RoomsList = () => {
                 }
             }
         }
-        newRoomSend(obj)
-        getRoomsList()
+        newRoomSend()
     }
 
 
     const handleDeleteRoom = async (id) => {
-        const deleteRoom = async (id) => {
+        const deleteRoom = async () => {
             try {
                 const response = await axiosPrivate.post('/housekeeper/rooms/delete', { id })
                 if (response?.status === 200) {
@@ -167,7 +167,7 @@ const RoomsList = () => {
                 }
             }
         }
-        deleteRoom(id)
+        deleteRoom()
     }
 
     const handleWorkersListOpen = (id, room) => {
@@ -231,37 +231,37 @@ const RoomsList = () => {
                         </AccordionSummary>
                         <AccordionDetails>
                             <Input name='building'
-                                lable='Корпус...'
+                                label='Корпус...'
                                 value={newRoom?.building}
                                 onChange={e => setNewRoom({ ...newRoom, building: e.target.value })}
                                 required
                             />
                             <Input name='room'
-                                lable='Комната...'
+                                label='Комната...'
                                 value={newRoom?.room}
                                 onChange={e => setNewRoom({ ...newRoom, room: e.target.value })}
                                 required
                             />
                             <Input name='subunit'
-                                lable='Подразделение...'
+                                label='Подразделение...'
                                 value={newRoom?.subunit}
                                 onChange={e => setNewRoom({ ...newRoom, subunit: e.target.value })}
                                 required
                             />
                             <Input name='type'
-                                lable='Тип...'
+                                label='Тип...'
                                 value={newRoom?.type}
                                 onChange={e => setNewRoom({ ...newRoom, type: e.target.value })}
                                 required
                             />
                             <Input name='head'
-                                lable='Ответственный...'
+                                label='Ответственный...'
                                 value={newRoom?.head}
                                 onChange={e => setNewRoom({ ...newRoom, head: e.target.value })}
                                 required
                             />
                             <Input name='phone'
-                                lable='Телефон...'
+                                label='Телефон...'
                                 value={newRoom?.phone}
                                 onChange={e => setNewRoom({ ...newRoom, phone: e.target.value })}
                                 required
@@ -287,7 +287,7 @@ const RoomsList = () => {
                     <AccordionDetails>
                         <UpdateBtn setData={getRoomsList}/>
                         <Input name='query_text'
-                            lable='Поисковой запрос...'
+                            label='Поисковой запрос...'
                             value={queryText}
                             onChange={e => setQueryText(e.target.value)}
                         />
