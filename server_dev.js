@@ -10,7 +10,7 @@ import refresh from "./routes/refresh.js"
 import dotenv from "dotenv"
 
 const fastify = Fastify({
-    logger: true
+    // logger: true
 })
 fastify.register(cors, (instance) => {
     return (req, callback) => {

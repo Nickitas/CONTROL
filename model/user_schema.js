@@ -6,7 +6,6 @@ export const schema_db_user = {
     surname: {
         type: String,
         maxLength: 60,
-        minLength: 2
     },
     name: {
         type: String,
@@ -17,9 +16,17 @@ export const schema_db_user = {
         type: String,
         maxLength: 60
     },
+    email: {
+        type: String,
+        maxLength: 60
+    },
     work_position: {
         type: String,
-        maxLength: 30,
+        maxLength: 60,
+    },
+    subunit: {
+        type: String,
+        maxLength: 130,
     },
     type: {
         type: String,
@@ -28,7 +35,7 @@ export const schema_db_user = {
     number_card: {
         type: String
     },
-    number_room: {
+    room: {
         type: String,
         maxLength: 30,
     },
@@ -50,6 +57,9 @@ export const schema_db_user = {
         maxLength: 60,
     },
     last_ip: {
+        type: String
+    },
+    last_online: {
         type: String
     },
     block: {

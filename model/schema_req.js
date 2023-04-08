@@ -3,55 +3,67 @@ export const schema_req_user = {
     // required:["surname","name","lastname","type","number_corp","number_room","login","password","rules" ],
 
     properties:{
-        surname:{                           //Фамилия
-            type:"string",
-            maxLength:60,   
-            minLength:2
+        surname: {
+            type: "string",
+            maxLength: 60
         },
-        name:{                              //Имя
-            type:"string",
-            maxLength:60,
-            minLength:2
+        name: {
+            type: "string",
+            maxLength: 60,
+            minLength: 2
         },
-        lastname:{                          //Отчество
-            type:"string",
-            maxLength:60
+        lastname: {
+            type: "string",
+            maxLength: 60
         },
-        subunit:{                              //Тип подразделения
-            type:"string",
-            maxLength:100,
-            minLength:3
+        email: {
+            type: "string",
+            maxLength: 60
         },
-        type:{                              //Тип подразделения
-            type:"string",
-            maxLength:30,
-            minLength:3
+        post: {
+            type: "string",
+            maxLength: 60,
         },
-        number_corp:{                       //Номер карты
-            type:"string",
-            maxLength:30,
+        subunit: {
+            type: "string",
+            maxLength: 130,
         },
-        number_room:{                       //Номер комнаты
-            type:"string",
-            maxLength:30,   
+        type: {
+            type: "string",
+            maxLength: 30,
         },
-        login:{                             //Логин
-            type:"string",
-            maxLength:30,
-            minLength:3
+        room: {
+            type: "string",
+            maxLength: 30,
         },
-        password:{                          //Пароль
-            type:"string",
-            maxLength:60,
-            minLength:6
+        login: {
+            type: "string",
+            maxLength: 30,
+            minLength: 3
         },
-        rules:{                             //Права доступа: true - Админ; false - Гость
-            type:"string",
-            maxLength:60,
+        password: {
+            type: "string",
+            maxLength: 60,
+            minLength: 6
         },
-        phone:{                             //Телефон
-            type:"string",
-            maxLength:60,
+        phone: {
+            type: "string",
+            maxLength: 60,
+        },
+        last_ip: {
+            type: ["string", "null"]
+        },
+        block: {
+            type: "boolean"
+        },
+        role: {
+            type: "integer"
+        },
+        ava: {
+            type: "string"
+        },
+        telegram: {
+            type: "string"
         }
     }
 }
