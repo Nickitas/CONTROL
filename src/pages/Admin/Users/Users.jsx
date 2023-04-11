@@ -1,29 +1,28 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../../hooks/useAuth'
-import { useAxiosPrivate } from '../../hooks/useAxiosPrivate'
+import { useAuth } from '../../../hooks/useAuth'
+import { useAxiosPrivate } from '../../../hooks/useAxiosPrivate'
 import jwt_decode from 'jwt-decode'
-import { Accordion } from '../../components/UI/Accordion/Accordion'
-import { AccordionSummary } from '../../components/UI/Accordion/AccordionSummary'
-import { AccordionDetails } from '../../components/UI/Accordion/AccordionDetails'
-import { Table } from '../../components/UI/Table/Table'
-import { TableHead } from '../../components/UI/Table/TableHead'
-import { TableBody } from '../../components/UI/Table/TableBody'
-import { TableRow } from '../../components/UI/Table/TableRow'
-import { TableHeadCell } from '../../components/UI/Table/TableHeadCell'
-import { TableBodyCell } from '../../components/UI/Table/TableBodyCell'
-import { EmptyCell } from '../../components/UI/Table/EmptyСell'
-import { Alert } from '../../components/UI/Alert/Alert'
-import { Select } from '../../components/UI/Select/Select'
-import { Input } from '../../components/UI/inputs/Input/Input'
-import { PhotoUploadInput } from '../../components/UI/inputs/PhotoUploadInput/PhotoUploadInput'
-import { UpdateBtn } from '../../components/UI/buttons/UpdateBtn/UpdateBtn'
-import { Loading } from '../../components/UI/loadings/Loading/Loading'
-import { LoadingSm } from '../../components/UI/loadings/LoadingSm/LoadingSm'
-import { Button } from '../../components/UI/buttons/Button/Button'
-import { BackLink } from '../../components/UI/BackLink/BackLink'
-import defaultperson from '../../assets/images/pic/defaultperson.svg'
-import { UserPlusIcon, SearchIcon, PencilIcon, TrashCanIcon, OkeyInSquareIcon, CrossInSquareIcon } from '../../components/svg.module'
+import { Accordion } from '../../../components/UI/Accordion/Accordion'
+import { AccordionSummary } from '../../../components/UI/Accordion/AccordionSummary'
+import { AccordionDetails } from '../../../components/UI/Accordion/AccordionDetails'
+import { Table } from '../../../components/UI/Table/Table'
+import { TableHead } from '../../../components/UI/Table/TableHead'
+import { TableBody } from '../../../components/UI/Table/TableBody'
+import { TableRow } from '../../../components/UI/Table/TableRow'
+import { TableHeadCell } from '../../../components/UI/Table/TableHeadCell'
+import { TableBodyCell } from '../../../components/UI/Table/TableBodyCell'
+import { EmptyCell } from '../../../components/UI/Table/EmptyСell'
+import { Alert } from '../../../components/UI/Alert/Alert'
+import { Select } from '../../../components/UI/Select/Select'
+import { Input } from '../../../components/UI/inputs/Input/Input'
+import { PhotoUploadInput } from '../../../components/UI/inputs/PhotoUploadInput/PhotoUploadInput'
+import { UpdateBtn } from '../../../components/UI/buttons/UpdateBtn/UpdateBtn'
+import { Loading } from '../../../components/UI/loadings/Loading/Loading'
+import { LoadingSm } from '../../../components/UI/loadings/LoadingSm/LoadingSm'
+import { Button } from '../../../components/UI/buttons/Button/Button'
+import defaultperson from '../../../assets/images/pic/defaultperson.svg'
+import { UserPlusIcon, SearchIcon, PencilIcon, TrashCanIcon, OkeyInSquareIcon, CrossInSquareIcon } from '../../../components/svg.module'
 import ModalEditUser from './ModalEditUser'
 import classes from './users.module.scss'
 
@@ -119,7 +118,6 @@ const Users = () => {
         const newUserSend = async () => {
             try {
                 const response = await axiosPrivate.post('/users', { obj })
-                console.log(obj.ava)
                 if (response?.status === 200) {
                     setAlertState({ 
                         show: true, 
@@ -432,9 +430,6 @@ const Users = () => {
 
     const users = (
         <section className={classes.users}>
-            <div className='container'>
-                <BackLink  />
-
                 <div className={classes.row}>
                     <h1 className='title'>Пользователи</h1>
                 </div>
@@ -624,7 +619,6 @@ const Users = () => {
                         <caption>Всего <b>{ sortedUsers.length }</b> пользователей</caption>
                     </Table>
                 </div>
-            </div>
 
             {
                 visible === 'modal_user_edit' && (

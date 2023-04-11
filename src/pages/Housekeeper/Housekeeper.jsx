@@ -1,12 +1,8 @@
-
 import { Outlet, useLocation } from 'react-router-dom'
-
 import { useAuth } from '../../hooks/useAuth'
 import jwt_decode from 'jwt-decode'
-
 import { BackLink } from '../../components/UI/BackLink/BackLink'
 import { FuncBtn } from '../../components/UI/buttons/FuncBtn/FuncBtn'
-
 import { HOUSEKEEPER_ROUT } from '../../utils/routersPath'
 import { housekeeperFunctional } from '../../utils/functionalConsts'
 import classes from './housekeeper.module.scss'

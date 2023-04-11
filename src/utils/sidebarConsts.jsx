@@ -1,48 +1,36 @@
 // SIDEBAR ITEMEMS
 
-import { MenuUser, 
-    MenuCard, 
-    MenuHostels, 
+import { 
+    MenuAdmin, 
     MenuOperator, 
     MenuMonitoring,
+    MenuCard,
+    MenuSecurity,
     MenuVideoSurveillance, 
     MenuHousekeeper, 
-    MenuSecurity,
+    MenuHostels, 
     MenuGame
 } from '../components/svg.module'
 
-import { USERS_ROUT, 
-    CARDS_ROUT, 
-    HOSTELS_ROUT, 
+import { 
+    ADMIN_ROUT, 
     OPERATOR_ROUT, 
     MONITORING_ROUT, 
+    CARDS_ROUT, 
+    SECURITY_ROUT, 
     VIDEO_SURVEILLANCE_ROUT, 
     HOUSEKEEPER_ROUT, 
-    SECURITY_ROUT, 
+    HOSTELS_ROUT, 
     GAME_ROUT 
 } from './routersPath'
 
 
 export const SIDEBAR_ITEMS = [
     {
-        to: USERS_ROUT,
-        img: <MenuUser/>,
-        name: 'Пользователи',
+        to: ADMIN_ROUT,
+        img: <MenuAdmin/>,
+        name: 'Админ панель',
         _lvl: [1],
-        anim: ''
-    },
-    {
-        to: CARDS_ROUT,
-        img: <MenuCard/>,
-        name: 'Пропуска',
-        _lvl: [1, 2, 3],
-        anim: ''
-    },
-    {
-        to: HOSTELS_ROUT,
-        img: <MenuHostels/>,
-        name: 'Общежития',
-        _lvl: [1, 2, 5],
         anim: ''
     },
     {
@@ -60,6 +48,20 @@ export const SIDEBAR_ITEMS = [
         anim: ''
     },
     {
+        to: CARDS_ROUT,
+        img: <MenuCard/>,
+        name: 'Пропуска',
+        _lvl: [1, 2, 3],
+        anim: ''
+    },
+    {
+        to: SECURITY_ROUT,
+        img: <MenuSecurity/>,
+        name: 'Security',
+        _lvl: [1, 2],
+        anim: ''
+    },
+    {
         to: VIDEO_SURVEILLANCE_ROUT,
         img: <MenuVideoSurveillance/>,
         name: 'Видеонаблюдение',
@@ -74,10 +76,10 @@ export const SIDEBAR_ITEMS = [
         anim: ''
     },
     {
-        to: SECURITY_ROUT,
-        img: <MenuSecurity/>,
-        name: 'Security',
-        _lvl: [1, 2],
+        to: HOSTELS_ROUT,
+        img: <MenuHostels/>,
+        name: 'Общежития',
+        _lvl: [1, 2, 5],
         anim: ''
     },
     {

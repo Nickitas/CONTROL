@@ -16,7 +16,10 @@
 }
 
 .hiddeninput {
-        
+    // width: 0.1px;
+    // height: 0.1px;
+    // opacity: 0;
+
 }
 
 .workplace {
@@ -26,87 +29,12 @@
     gap: 40px;
 
 
-    .person_block {
-        flex-grow: 1;
-        
-
-    }
     .keys_block {
         flex-grow: 3;
-        
-
     }
-}
 
-
-.card {
-    position: relative;
-    margin: 10px 0;
-    // max-width: 360px;
-    perspective: 1000px;
-
-    .front, .back {
-        position: absolute;
-        top: 0;
-        left: 0;
-        // max-width: 360px;
-        // max-height: 480px;
-        width: 18.75vw;
-        height: 25vw;
-        min-width: 226px;
-        min-height: 226px;
-        border-radius: 25px;
-        -webkit-box-shadow: 2px 2px 8px 4px rgba(34, 60, 80, 0.15);
-        -moz-box-shadow: 2px 2px 8px 4px rgba(34, 60, 80, 0.15);
-        box-shadow: 2px 2px 8px 4px rgba(34, 60, 80, 0.15);
-        backface-visibility: hidden;
-        transition: all .8s ease-in-out;
-    }
-    
-    .front {
-        position: relative;
-        background: no-repeat url(../../../assets/pic/defaultperson.svg) center center;
-        background-size: contain !important;
-        overflow: hidden;
-        
-        .person_name {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            right: 0;
-            margin: 0;
-            padding: 5px 10px;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: 50px;
-            @include subtitle;
-            color: #000;
-            font-size: 16px;
-            text-align: left;
-        }
-    }
-    
-    .back {
-        padding: 20px;
-        display: flex;
+    @media (max-width: 830px) {
         flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        transform: rotateY(180deg);
-        
-        .person_info {
-            display: flex;
-            flex-direction: column;
-            font-size: 14px;
-            text-align: left;
-            p ~ p {
-                margin-top: 4px;
-            }
-        }
-    }
-    
-    &:hover {
-        .front {transform: rotateY(180deg);}
-        .back {transform: rotateY(360deg);}
     }
 }
 

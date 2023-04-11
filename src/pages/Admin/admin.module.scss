@@ -1,0 +1,28 @@
+
+
+
+.admin {
+    margin: 0 auto;
+    height: 100%;
+    
+
+    .row {
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 1920px;
+
+        & ~ row {
+            margin-top: 1vw;
+        }
+    }
+
+    .grid {
+        margin: 20px 0;
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        gap: 10px;
+    }
+}

@@ -14,30 +14,48 @@ import net from '../assets/images/icons/glass/net.svg'
 import activity from '../assets/images/icons/glass/activity.svg'
 import eye from '../assets/images/icons/glass/eye.svg'
 import location from '../assets/images/icons/glass/location.svg'
+import users from '../assets/images/icons/glass/users.svg'
+import console from '../assets/images/icons/glass/console.svg'
 
 
-// 
 
-// 
 
-// 
+// ADMIN FUNCTIONAL
+import { USERS_ROUT, SYSLOGS_ROUT } from './routersPath'
+export const adminFunctional = [
+    {
+        img: users,
+        title: 'Пользователи',
+        disc: 'Управление аккаунтами пользователей системы CONTROL',
+        path: USERS_ROUT,
+        _lvl: [1],
+    },
+    {
+        img: console,
+        title: 'Логи системы',
+        disc: 'Просмотр системных событий',
+        path: SYSLOGS_ROUT,
+        _lvl: [1, 2],
+    }
+]
 
-// 
+// OPERATOR FUNCTIONAL
+
 
 // MONITORING FUNCTIONAL
-import { HISTORY_STATISTICS_ROUT, VISITS_ROUT, VIEW_AUDIENCES_ROUT, SEARCH_PERSON_ROUT, MONITORING_UPLOAD_ROUT } from './routersPath'
+import { STATISTICS_ROUT, VISITS_ROUT, VIEW_AUDIENCES_ROUT, SEARCH_PERSON_ROUT, MONITORING_REPORTS_ROUT } from './routersPath'
 export const monitoringFunctional = [
     {
         img: activity,
-        title: 'История',
-        disc: 'Статистические данные по посещаемости',
-        path: HISTORY_STATISTICS_ROUT,
+        title: 'Статистика событий',
+        disc: 'Статистические данные по посещаемости субъектов мониторинга',
+        path: STATISTICS_ROUT,
         _lvl: [1, 2, 3, 6],
     },
     {
         img: calendar,
-        title: 'Посещаемость',
-        disc: 'Мониторинг событий входа-выхода по кампусам и аудиториям',
+        title: 'График посещаемости',
+        disc: 'Мониторинг событий входа-выхода по кампусам и аудиториям субъектов мониторинга',
         path: VISITS_ROUT,
         _lvl: [1, 2, 3, 6],
     },
@@ -51,20 +69,27 @@ export const monitoringFunctional = [
     {
         img: location,
         title: 'Поиск персоны',
-        disc: 'Получение истории перемещения по идентификатору',
+        disc: 'Получение истории перемещения по идентификатору субъектов мониторинга',
         path: SEARCH_PERSON_ROUT,
         _lvl: [1, 2, 3, 6],
     },
     {
         img: report,
         title: 'Выгрузка',
-        disc: 'Формирование отчетов выгрузки',
-        path: MONITORING_UPLOAD_ROUT,
+        disc: 'Формирование отчетов выгрузки по работе мониторинга',
+        path: MONITORING_REPORTS_ROUT,
         _lvl: [1, 2, 3, 6],
     },
 ]
 
-// 
+// CARDS FUNCTIONAL
+
+
+// SECURITY FUNCTIONAL
+
+
+// VIDEO_SURVEILLANCE FUNCTIONAL
+
 
 // HOUSEKEEPER FUNCTIONAL
 import { KEY_ACCOUNTING_ROUT, EL_JOURNAL_ROUT, SUBUNIT_ROUT, ROOMS_LIST_ROUT, DISTURBERS_ROUT } from './routersPath'
@@ -106,6 +131,7 @@ export const housekeeperFunctional = [
     },
 ]
 
-// 
+// HOSTELS FUNCTIONAL
 
-// 
+
+// GAME FUNCTIONAL

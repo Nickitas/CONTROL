@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../../../hooks/useAuth'
 import { useAxiosPrivate } from '../../../hooks/useAxiosPrivate'
 import jwt_decode from 'jwt-decode'
+import { PersonCard } from './PersonCard/PersonCard'
 import { Alert } from '../../../components/UI/Alert/Alert'
 import { Loading } from '../../../components/UI/loadings/Loading/Loading'
 import { LoadingSm } from '../../../components/UI/loadings/LoadingSm/LoadingSm'
 import { Bell } from '../../../components/svg.module'
-import defaultperson from '../../../assets/images/pic/defaultperson.svg'
 import classes from './keys_accounting.module.scss'
 
 
@@ -70,23 +70,14 @@ const KeyBtn = (props) => {
 // housekeeper/kit_keys
 
 
-// 00B4C5048296
-// 0001064D55B2
-// 03203395331B
-// 00569854CC6E
-// 0120CEEEBF04
-// 0099DAE5FD44
-// 0099DAE5FD44
-
 
 const KeysAccounting = () => {
     const hiddenInputRef = useRef()
     const { auth } = useAuth()
     const axiosPrivate = useAxiosPrivate()
 
-    // ФИО, фотка, должность, подразделение, кол-во нарушений
-    const [personData, setPersonData] = useState([])
-    const [availabelKeys, setAvailabelKeys] = useState([])
+    const [personData, setPersonData] = useState({})
+    const [availableRooms, setAvailableRooms] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
     const [alertState, setAlertState] = useState({ show: false, type: '', message: '' })
@@ -95,6 +86,7 @@ const KeysAccounting = () => {
         ? jwt_decode(auth.accessToken)
         : undefined
     const userRole = decoded?.UserInfo?.roles || []
+
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -111,26 +103,57 @@ const KeysAccounting = () => {
         const regex = /^[0-9A-Za-z]{12}$/
         return regex.test(key)
     }
-
-    const getPersonAvailabelKeys = async (e) => {
-        let key = e.target.value
-        if (isValidKey(key)) {
-            try {
-                const response = await axiosPrivate.get(`/housekeeper/user_keys/${key}`)
-                setPersonData(response?.data.person)
-                
-            } catch (err) {
-                if(!err?.response) {
-                    if (!err?.response) console.log(`No response from server`)
-                } else {
-                    console.error(err)
+    
+    const hendleGetPersonAvailabelRooms = (e) => {
+        const getPersonAvailabelRooms = async () => {
+            let key = e.target.value
+                try {
+                    if (isValidKey(key)) {
+                        const response = await axiosPrivate.get(`/housekeeper/user_keys/${key}`)
+                        if (response?.status === 200) {
+                            setPersonData(response.data.person)
+                            setAvailableRooms(response.data.rooms.map(el => {
+                                return {
+                                    id: el._id,
+                                    building: el.building,
+                                    room: el.room,
+                                    signaling: el.signaling,
+                                    key_status: el.key_status,
+                                    signal_status: el.signal_status,
+                                    subunit: el.subunit,
+                                    head: el.head,
+                                    phone: el.phone,
+                                }
+                            }))
+                            setAlertState({ 
+                                show: true, 
+                                message: `Информация найдена!`
+                            })
+                        }
+                    } else {
+                        setAlertState({ 
+                            show: true, 
+                            type: 'error',
+                            message: `Неверный ввод ключа! Повторите`
+                        })
+                    }
+                } catch (err) {
+                    if(!err?.response) {
+                        setAlertState({ 
+                            show: true, 
+                            type: 'error',
+                            message: `Нет ответа от сервера!`
+                        })
+                    } else {
+                        setAlertState({ 
+                            show: true, 
+                            type: 'error',
+                            message: `Ошибка считывания! \nПопробуйте повторить`
+                        })
+                    }
                 }
-            }
         }
-    }
-
-    const setPersonPic = () => {
-        // ({background:`no-repeat url(${data?.body?.person?.avatar ? data.body.person.avatar : defaultperson}) center center`})
+        getPersonAvailabelRooms()
     }
 
     const keys_accounting = (
@@ -139,40 +162,43 @@ const KeysAccounting = () => {
                 <h1 className='title'>Учет ключей</h1>
             </div>
 
+            <div>00B4C5048296</div>
+            <div>0001064D55B2</div>
+            <div>03203395331B</div>
+            <div>00569854CC6E</div>
+            <div>0120CEEEBF04</div>
+            <div>0099DAE5FD44</div>
+            <div>0099DAE5FD44</div>
+
             <input className={classes.hiddeninput}
                 autoFocus
                 ref={hiddenInputRef}
-                onChange={getPersonAvailabelKeys}
+                onChange={hendleGetPersonAvailabelRooms}
             />
 
             <div className={classes.workplace}>
+                <PersonCard
+                    data={personData}
+                />
                 
-                <div className={classes.person_block}>
-                    <div className={classes.card}>
-                        {/* <div className={classes.front} style={setPersonPic}> */}
-                        <div className={classes.front}>
-                            <div className={classes.person_name}>
-                               { personData.fio }
-                            </div>
-                        </div>
-                        <div className={classes.back}>
-                            <div className={classes.person_info}>
-                                <p>{ personData.position }</p>
-                                <p>{ personData.department }</p>
-                                <p><b>Нарушений:</b> {Math.round((Math.random() * (10 - 1) + 1), 1)}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div className={classes.keys_block}>
                     <h3 className='headline'>Доступные ключи</h3>
                     <div className={classes.list}>
                         {
-                          'keys'  
+                          availableRooms.map(key => (
+                              
+                              <div key={key._id}>
+                                <span>{ `${key.building}-${key.room}` }</span>
+                                <span>{ key.key_status }</span>
+                                <span>{ key.signaling }</span>
+                                <span>{ key.signal_status }</span>
+                            </div>
+
+                          ))
                         }    
                     </div>
                 </div>
+
             </div>
 
             <div className={classes.notes}>

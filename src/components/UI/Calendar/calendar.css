@@ -1,0 +1,28 @@
+
+
+.calendar {
+    margin: 20px auto;
+}
+
+.fc-prev-button span,
+.fc-next-button span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    text-align: center;
+}
+
+.fc-prev-button span::before {
+    content: url(../../../assets/images/icons/left_arrow.svg);
+    position: absolute;
+    top: 0;
+    fill: var(--text_color);
+}
+.fc-next-button span::before {
+    content: url(../../../assets/images/icons/right_arrow.svg);
+    position: absolute;
+    top: 0;
+    fill: var(--text_color);
+}
