@@ -34,6 +34,9 @@ export const addUser = async(req, res) => {
  
         const user = new DB_USER({...obj, refreshToken: [] })
         await user.save()
+        console.log(user)
+        let user_unfo = await DB_USER.findOne({login: obj.login})
+        console.log(user_unfo)
         if (ava){
             fs.stat('./avatars', async function(error) {
                 if (error) {
@@ -41,7 +44,8 @@ export const addUser = async(req, res) => {
                         if(err) throw err;
                     })
                 }
-                fs.writeFileSync('./avatars/' + user._id + '.txt', ava)
+
+                fs.writeFileSync('./avatars/' + user_unfo._id + '.txt', ava)
             })
         }
         return res.send({"success": true})
@@ -81,7 +85,6 @@ export const getUsers = async(req, res) => {
                 ava: ava
             })
         })
-        console.log(data)
         return res.send(data)
     })
 }
