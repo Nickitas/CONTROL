@@ -1,0 +1,78 @@
+@import '../../assets/mixins.scss';
+@import '../../assets/aminations.scss';
+
+
+.Home {
+    width: 100%;
+    height: calc(100vh - 99px);
+
+    video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+}
+
+.hellow {
+    position: absolute;
+    @include title;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 9px;
+    background-color: var(--main_bg);
+    color: var(--text-color);
+    transition: all .2s ease-in;
+    animation: swing2 .6s 3s linear;
+    &.hidde {
+        transform: translateY(-150%);
+    }
+}
+@include swing2;
+
+.hero {
+    padding: 20px 20px 5px;
+    position: absolute;
+    bottom: 32.19px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+
+    h1 {
+        @include title;
+        margin: 0
+    }
+
+    p {
+        @include subtitle;
+        & ~ p {
+            font-size: 12px;
+            text-align: right;
+        }
+    }
+    
+    .controll {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: var(--ex_color);
+        border-radius: 15px;
+        user-select: none;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+    }
+}
+
+
+@media (max-width:1011px) {
+    .hero {
+        .h1 {
+            font-size: 20px;
+        }
+    }
+}

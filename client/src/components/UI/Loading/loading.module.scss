@@ -1,0 +1,67 @@
+
+$particles: 100;
+$particleSize: 4px;
+$radius: 50;
+$lapDuration: 1s;
+
+.loading_wrapp {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    perspective: 500px;
+}
+
+i {
+    display: block;
+    position: absolute;
+    opacity: 1;
+  
+    b {
+        display: block;
+        width: $particleSize;
+        height: $particleSize;
+        border-radius: $particleSize;
+        background: rgb(255, 255, 255);
+        box-shadow: 0px 0px 14px rgba(255,255,255,1);
+        
+        animation-name: spin;
+        animation-duration: $lapDuration;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+}
+
+@for $i from 1 through $particles {
+  i:nth-child(#{$i}) {
+    $angle: ( $i / $particles ) * 360;
+    
+    transform:
+      rotate( #{$angle}deg )
+      translate3d( #{$radius}px, 0, 0 );
+
+    b {
+      animation-delay: $i * ($lapDuration / ( $particles - 2 ));
+    }
+  }
+}
+
+@keyframes spin {
+    0% {
+        transform: scale(1);
+    }
+    15% {
+        transform: translate(-$particleSize/2, -$particleSize/2) scale(3);
+    }
+    50% {
+        transform: scale(1);
+    }
+}

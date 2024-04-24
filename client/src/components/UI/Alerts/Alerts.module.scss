@@ -1,0 +1,51 @@
+@import '../../../assets/mixins.scss';
+
+
+.Alerts {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    bottom: 32.19px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    opacity: 0;
+    transition: all .15s ease-in;
+    &.active {
+        opacity: 1;
+        transform: translateX(0%);
+        -webkit-animation: slide .4s linear;
+        animation: slide .4s linear;
+    }
+
+    p {
+        @include subtitle;
+        margin: 0 0 0 15px;
+    }
+
+    &.okey {
+        border: 1px solid #008000;
+        background-color: #0080005f;
+        box-shadow: 0px 2px 52px -5px #094309 inset !important;
+        -webkit-box-shadow: 0px 2px 52px -5px #094309 inset !important;
+        -moz-box-shadow: 0px 2px 52px -5px #094309 inset !important;
+    }
+    &.danger {
+        border: 1px solid #ff0000;
+        background-color: #ff00005f;
+        box-shadow: 0px 2px 52px -5px #380707 inset !important;
+        -webkit-box-shadow: 0px 2px 52px -5px #380707 inset !important;
+        -moz-box-shadow: 0px 2px 52px -5px #380707 inset !important;
+    }
+}
+
+@-webkit-keyframes slide {
+    0% { transform: translateX(-100%); }
+    25% { transform: translateX(-50%); }
+    50% { transform: translateX(0%); }
+    75% { transform: translateX(10%); }
+    100% { transform: translateX(0%); }
+}

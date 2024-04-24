@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "adm-zip": "^0.5.10",
+    "ajv": "^8.6.3",
+    "exceljs": "^4.3.0",
+    "fastify": "^3.22.1",
+    "fastify-cors": "^6.0.2",
+    "fastify-static": "^4.6.1",
+    "image-to-base64": "^2.2.0",
+    "mongoose": "^6.2.1",
+    "node-firebird": "^1.0.0",
+    "node-xlsx": "^0.21.0",
+    "stream": "^0.0.2",
+    "xlsx": "^0.18.5",
+    "xlsx-js-style": "^1.2.0"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "addrooms": "node test/addPermission.js"
+  }
+}

@@ -1,0 +1,128 @@
+@import '../../assets/mixins.scss';
+
+.operator {
+    padding-bottom: 80px;
+
+    a {
+        text-decoration: none;
+    }
+
+    .row {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .title {
+        @include title;
+
+        span {
+            opacity: .6;
+        }
+    }
+    .subtitle {
+        @include subtitle;
+    }
+    .panel {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        div:nth-child(n+1) {
+            margin-right: 10px;
+        }
+    }
+    .search_panel {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        .search_input {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            svg {
+                position: absolute;
+                top: 50%;
+                left: 18px;
+                transform: translateY(-50%);
+            }
+            input {
+                padding-left: 35px;
+            }
+        }
+        fieldset div label span {
+            padding: 0;
+            font-family: inherit !important;
+            font-size: 0.6875rem !important;
+        }
+    }
+    .table_wrapp {
+        padding-bottom: 40px;
+    }
+}
+
+
+
+
+
+select {
+    padding: 11px 15px;
+    display: inline-block;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--main_bg);
+    font-family: inherit;
+    outline: none;
+    color: var(--text_color);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: all .2s ease-in;
+    &::-ms-expand {
+        display: none;
+    }
+    &:hover, &:focus {
+        color: var(--text_color);
+        border: 2px solid #4A76A8;
+        box-shadow: 0px 2px 52px -5px #53a9ea3d inset;
+        -webkit-box-shadow: 0px 2px 52px -5px #53a9ea3d inset;
+        -moz-box-shadow: 0px 2px 52px -5px #53a9ea3d inset;
+        border: 1px solid #53a9ea3d;
+    }
+    &:disabled {
+        opacity: 0;
+        pointer-events: none;
+    }
+    &:disabled {
+        opacity: 0;
+        pointer-events: none;
+    }
+    option {
+        padding: 10px;
+        border-radius: 15px;
+        border: none;
+        background: #ececec;
+        font-family: inherit;
+        color: #1b1b1b;
+        width: 300px;
+    }
+}
+
+
+
+
+@media (max-width:1011px) {
+    .Operator {
+        .title {
+            font-size: 20px;
+        }
+        .subtitle {
+            font-size: 14px;
+        }
+    }
+}
